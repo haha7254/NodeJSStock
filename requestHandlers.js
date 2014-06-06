@@ -109,6 +109,7 @@ function ajaxServer( res, postData){
 				//寫出的時候要轉成字串才行
 				console.log(today);
 				res.write(today.toString());
+				//
 				res.end();					
 			});
 			

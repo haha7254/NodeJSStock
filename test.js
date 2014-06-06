@@ -111,7 +111,7 @@ function onRcvData () {
 　if (ajax.readyState == 4) {
 　　if (ajax.status == 200) {
 　　　var content = document.getElementById ('result');
-　　　content.innerHTML = ajax.responseText;
+　　　content.innerHTML = ajax.responseText;				
 		
 　　} else {
 　　　alert ("伺服器處理錯誤");
