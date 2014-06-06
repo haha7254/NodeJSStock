@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5"/>
+<script language="Javascript">
+
+// AJAX 物件
+var ajax;
+
+// 依據不同的瀏覽器，取得 XMLHttpRequest 物件
+function createAJAX() {
+　if (window.ActiveXObject) {
+　　try {
+　　　return new ActiveXObject("Msxml2.XMLHTTP");
+　　} catch (e) {
+　　　try {
+　　　　return new ActiveXObject("Microsoft.XMLHTTP");
+　　　} catch (e2) {
+　　　　return null;
+　　　}
+　　}
+　} else if (window.XMLHttpRequest) {
+　　return new XMLHttpRequest();
+　} else {
+　　return null;
+　}
+}
+
+// 非同步傳輸的回應函式，用來處理伺服器回傳的資料
+function onRcvData () {
+　if (ajax.readyState == 4) {
+　　if (ajax.status == 200) {
+　　　var content = document.getElementById ('content');
+　　　content.innerHTML = ajax.responseText;
+　　} else {
+　　　alert ("伺服器處理錯誤");
+　　}
+　} 
+}
+
+// 非同步送出資料
+function ajaxSendRequest(uri) {
+　ajax = createAJAX() ;
+　if (!ajax) {
+　　alert ('使用不相容 XMLHttpRequest 的瀏覽器');
+　　return 0;
+　}
+
+　ajax.onreadystatechange = onRcvData;
+　ajax.open ("GET", uri, true);
+　ajax.send ("");
+}
+
+</script>
+</head>
+<body>
+<div id="content"></div><br>
+<input type="button" value="查詢" onclick="ajaxSendRequest('hello.php')" >
+</body>
+</html>

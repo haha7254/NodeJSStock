@@ -1,0 +1,26 @@
+{
+   "Stock" : [
+      {
+         "ClosePriece" : 42,
+         "HighPriece" : 43,
+         "LowPriece" : 38,
+         "OpenPriece" : 40,
+         "StockNumber" : 1001
+      },
+      {
+         "ClosePriece" : 43,
+         "HighPriece" : 44,
+         "LowPriece" : 39,
+         "OpenPriece" : 41,
+         "StockNumber" : 1002
+      },
+      {
+         "ClosePriece" : 22,
+         "HighPriece" : 23,
+         "LowPriece" : 34,
+         "OpenPriece" : 13,
+         "StockNumber" : 1003
+      }	  
+   ]
+}
+
