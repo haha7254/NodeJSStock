@@ -5,11 +5,11 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 	var jsonobj = JSON.parse(data);
 	
 	var stockToday="";
-	var returnvalue="7788";
+	var returnArray=new Array();
 	
 	//load server data//-------------------------------------------------//
 	var fs = require('fs');
-	var file = __dirname + '/today.json';
+	var file = __dirname + '/music.json';
 	
 	fs.readFile(file, 'utf8', function (err, datajson) {
 		if (err) {
@@ -28,6 +28,9 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 		//-------------------------------------------------------------------//
 		
 		//選擇滿足item1的stocks  讀取滿足item1的json
+		
+		console.log(stockToday.stock[0]);
+		
 		var countItem = 0;
 		var stockarr = new Array();
 		if ( jsonobj.item1 === true) 
@@ -56,33 +59,66 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 			}			
 			countItem++;
 		}		
+		if ( jsonobj.item4 === true) 
+		{
+			for( var i = 0;i <stockToday.stock[0].item4.length; ++i)
+			{
+				stockarr.push(stockToday.stock[0].item4[i]);
+			}			
+			countItem++;
+		}			
 		//sort the array
 		stockarr.sort();
 		
+		console.log("stockarr count:"+countItem+"\n" );
+		console.log(stockarr );
+		
 		var count = 0;
-		var stock = stockarr.shift();
-		count++;
+		var temp = "";
 		
-	
-		//create object
-		// function stock( stocknum){
-			// this.stockbumber = stocknum;
-			// this.count = 1;
-		// };
+		do{
+			if( stockarr.length == 0) break;
+			
+			if( stockarr.length ==  1 ){
+				if ( 1 == countItem ){
+					temp = stockarr.shift();
+					returnArray.push(temp);
+					console.log(returnArray );
+				}else{
+					temp = stockarr.shift();
+				}
+			}
+			else{
+				
+				count = 0;
+				temp = stockarr.shift();
+				
+				count++;
+				
+				do{
+					if ( temp == stockarr[0] ){
+						temp = stockarr.shift();
+						count++;
+					}else{
+						break;
+					}
+					
+							
+				}while( stockarr.length != 0 || stockarr[0] == temp );
+			
+			}
+			//console.log("----------------------" );
+			
+			if ( count == countItem){
+			returnArray.push(temp);
+			//console.log(returnvalue );
+		}
+				
 		
-		// var stock1 = new stock(1001);
-		// stock1.count++;
-		//
-		
-		// var stockindex = stock1.shift();
-		// var stock1 = new stock(stockindex);
-		
-		
-	
-		//console.log(stockarr);
-		
-		returnvalue = stockarr;
-		(callback && typeof(callback)==="function") && callback( stockarr );	 
+		}while( stockarr.length != 0 );
+
+
+		(callback && typeof(callback)==="function") && callback( returnArray );	 
 
 	});
 
