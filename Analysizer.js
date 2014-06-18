@@ -9,7 +9,7 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 	
 	//load server data//-------------------------------------------------//
 	var fs = require('fs');
-	var file = __dirname + '/music.json';
+	var file = __dirname + '/today.json';
 	
 	fs.readFile(file, 'utf8', function (err, datajson) {
 		if (err) {

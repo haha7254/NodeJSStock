@@ -5,26 +5,82 @@
 	<script type="text/javascript" src ="jquery-2.1.0.min.js"></script>
 </head>
 <body>
-this is a test for stock 
-
-	<div>    
-		<input type="checkbox"  name ="s1" id="id1" value="1">條件1<br>
-		<input type="checkbox"  name ="s2" id="id2" value="2">條件2<br>
-		<input type="checkbox" checked="checked"  name ="s3"id="id3" value="3">條件3
-		<input list="browsers">
-
-			<datalist id="browsers">
-			  <option value="Internet Explorer">
-			  <option value="Firefox">
-			  <option value="Chrome">
-			  <option value="Opera">
-			  <option value="Safari">
-			</datalist>
-		<br>
-		<input type="checkbox" checked="checked"  name ="s4"id="id4" value="4">條件4<br>
-		<input type="button" id="button" value="確定" onclick="test()"/>
+	<p align="center">this is a test for stock </p>
+	
+	<!-- 各週期MA移動平均線 -->
+	<div>
+		<form>
+			<fieldset>
+				<legend>各週期MA移動平均線</legend>
+				<input type="checkbox"  name ="DayAvg" id="Check_DayAvg" value="DayAvg">日線:
+					<input list="Combo_Day_AVG" value="18" size="2">
+						<datalist id="Combo_Day_AVG">		
+						  <option value="18">
+						  <option value="50">
+						  <option value="240">
+						</datalist>						
+					(天)<br>				
+				<input type="checkbox"  name ="WeekAvg" id="Check_WeekAvg" value="WeekAvg">週線:
+					<input list="Combo_WEEK_AVG" value="13" size="2">
+						<datalist id="Combo_WEEK_AVG">		
+						  <option value="13">
+						  <option value="50">
+						</datalist>				
+					(週)<br>	
+				<input type="checkbox"  name ="MonthAvg" id="Check_MonthAvg" value="MonthAvg">月線:
+				月平均線<br>
+					
+				<input type="checkbox"  name ="SeasonAvg" id="Check_SeasonAvg" value="SeasonAvg">季線:
+				季平均線<br>
+			</fieldset>
+		</form>	
 	</div>
-	<div id="result"></div>
+	
+	<!--波段選股條件-->
+	<div>   
+		<form>
+			<fieldset>
+				<legend>波段選股條件</legend>
+				<input type="checkbox"  name ="s1" id="id1" value="1">季K金叉 OR 向上 (季K站上「4」之上)<br>
+				<input type="checkbox"  name ="s2" id="id2" value="2">月K棒站在12月均線上<br>
+				<input type="checkbox" checked="checked"  name ="s3"id="id3" value="3">週K棒站上
+					<input list="Combo_WEEK_K" value="20" size="2">
+						<datalist id="Combo_WEEK_K">		
+						  <option value="13">
+						  <option value="20">
+						  <option value="50">
+						</datalist>		
+					周均線上<br>
+				<input type="checkbox" checked="checked"  name ="s4"id="id4" value="4">日K棒站上
+					<input list="Combo_DAY_K" value="18" size="2">
+						<datalist id="Combo_DAY_K">		
+						  <option value="18">
+						  <option value="50">
+						</datalist>		
+					日均線上，且需240日均線之上<br>
+				<input type="button" id="button" value="確定" onclick="test()"/>
+				</fieldset>
+		</form>
+	</div>
+	
+	
+	<!-- 選股選項 (須配合日,周,MACD雙線&柱狀體0軸之上) -->
+	<div>
+		<form>
+			<fieldset>
+				<legend>選股選項</legend>
+				<input type="checkbox"  name ="AdvS1" id="id_Ad1" value="1">五線糾結(05/10/20/60/120)+240日均線上揚<br>
+				<input type="checkbox"  name ="AdvS2" id="id_Ad2" value="2">四線糾結(05/10/20/60)+240日均線上揚<br>
+				<input type="checkbox"  name ="AdvS3" id="id_Ad3" value="3">三線糾結(05/10/20)+240日均線上揚<br>
+			</fieldset>
+		</form>
+	</div>
+	
+	<!-- 結果顯示 -->
+	<fieldset>
+		<legend>今日選股</legend>
+		<div id="result"></div>
+	</fieldset>		
 	
 <script>
 	//test();
