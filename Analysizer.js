@@ -50,14 +50,37 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 				stockarr.push(stockToday.stock[0].item2[i]);
 			}			
 			countItem++;
+
+	//////
+
 		}
 		if ( jsonobj.item3 === true) 
 		{
-			for( var i = 0;i <stockToday.stock[0].item3.length; ++i)
-			{
-				stockarr.push(stockToday.stock[0].item3[i]);
-			}			
-			countItem++;
+	//		for( var i = 0;i <stockToday.stock[0].item3.length; ++i)
+	//		{
+	//			stockarr.push(stockToday.stock[0].item3[i]);
+	//		}			
+	//		countItem++;
+
+		var item;
+		//alert( jsonobj.Check_DayAvg);
+		switch ( jsonobj.Combo_Day_AVG)
+		{
+			case 13: item=stockToday.stock[0].item2; break;
+			case 20: item=stockToday.stock[0].item3; break;
+			case 50: item=stockToday.stock[0].item4; break;
+			default: item=stockToday.stock[0].item3; break;
+
+                        for( var i = 0;i <item.length; ++i)
+                        {
+                                stockarr.push(item[i]);
+                        }
+
+
+
+
+		}
+
 		}		
 		if ( jsonobj.item4 === true) 
 		{

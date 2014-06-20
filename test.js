@@ -6,6 +6,7 @@ function test(){
 	var item2 = document.getElementById("id2").checked;
 	var item3 = document.getElementById("id3").checked;
 	var item4 = document.getElementById("id4").checked;
+	var Check_DayAvg = document.getElementById("Combo_Day_AVG").value;
 	var text1="1000";
 	
 	var choose = new Object();
@@ -13,6 +14,7 @@ function test(){
 	choose.item2 = item2;
 	choose.item3 = item3;
 	choose.item4 = item4;
+	choose.Combo_Day_AVG = Combo_Day_AVG;
 	choose.text1 = text1;
 	
 	var memberfilter = new Array();
@@ -21,10 +23,11 @@ function test(){
 	memberfilter[2] = "item3";
 	memberfilter[3] = "item4";
 	memberfilter[4] = "text1";
+	memberfilter[5] = "Combo_Day_AVG";
 	
 	var jsonText = JSON.stringify(choose, memberfilter, "\t");
 	//document.write(jsonText);	
-	
+	document.write(jsonText);
 	ajaxSendRequest('ajaxServer.js',jsonText);
 	
 	// $.ajax({
