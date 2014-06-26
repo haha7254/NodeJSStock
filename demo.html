@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+ 
+<script>
+ 
+// Safari reports success of list attribute, so doing ghetto detection instead
+yepnope({
+  test : (!Modernizr.input.list || (parseInt($.browser.version) > 400)),
+  yep : [
+      'https://raw2.github.com/CSS-Tricks/Relevant-Dropdowns/master/js/jquery.relevant-dropdown.js',
+      'https://raw2.github.com/CSS-Tricks/Relevant-Dropdowns/master/js/load-fallbacks.js'
+  ]
+});
+</script>
+</head>
+<body>
+<input type="text" list="countries" id="CID" name="mycountry" />
+ 
+<datalist id="countries">
+    <option value="India">India</option>
+    <option value="United States">United States</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="Germany">Germany</option>
+    <option value="France">France</option>
+</datalist>
+
+<input type="button" value="buttontest" id="buttonID" onclick="test()"/>
+
+<script>
+	function test(){
+		//alert("");
+		alert(document.getElementById("CID").value);
+	}
+
+</script>
+
+</body>
+</html>
+

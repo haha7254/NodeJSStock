@@ -29,7 +29,7 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 		
 		//選擇滿足item1的stocks  讀取滿足item1的json
 		
-		console.log(stockToday.stock[0]);
+		//console.log(stockToday.stock[0]);
 		
 		var countItem = 0;
 		var stockarr = new Array();
@@ -63,24 +63,27 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 	//		countItem++;
 
 		var item;
-		//alert( jsonobj.Check_DayAvg);
-		switch ( jsonobj.Combo_Day_AVG)
+		var iIndex = 0;
+		iIndex = jsonobj.Combo_Week_AVG;
+		console.log( "Index:"+ iIndex);
+		switch ( iIndex)
 		{
-			case 13: item=stockToday.stock[0].item2; break;
-			case 20: item=stockToday.stock[0].item3; break;
-			case 50: item=stockToday.stock[0].item4; break;
-			default: item=stockToday.stock[0].item3; break;
+			
+			case 13: item=stockToday.stock[0].item3; break;
+			case 20: item=stockToday.stock[0].item4; break;
+			case 50: item=stockToday.stock[0].item5; break;
+			default: item=stockToday.stock[0].item4; break;
+			
+		}
 
+
+			console.log("item count:"+item.length);
                         for( var i = 0;i <item.length; ++i)
                         {
                                 stockarr.push(item[i]);
                         }
-
-
-
-
-		}
-
+			//console.log(stockarr);
+			countItem++;
 		}		
 		if ( jsonobj.item4 === true) 
 		{
@@ -94,7 +97,7 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 		stockarr.sort();
 		
 		console.log("stockarr count:"+countItem+"\n" );
-		console.log(stockarr );
+		//console.log(stockarr );
 		
 		var count = 0;
 		var temp = "";
@@ -106,7 +109,7 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 				if ( 1 == countItem ){
 					temp = stockarr.shift();
 					returnArray.push(temp);
-					console.log(returnArray );
+				//	console.log(returnArray );
 				}else{
 					temp = stockarr.shift();
 				}
