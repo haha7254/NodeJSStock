@@ -7,6 +7,11 @@ function test(){
 	var item3 = document.getElementById("id3").checked;
 	var item4 = document.getElementById("id4").checked;
 	var Combo_Week_AVG = document.getElementById("ID_Combo_WEEK_K").value;
+	var Combo_Day_AVG = document.getElementById("ID_Combo_DAY_K").value;
+	var AdvancedItem1 = document.getElementById("id_Ad1").checked;	//5
+	var AdvancedItem2 = document.getElementById("id_Ad2").checked;	//4 
+	var AdvancedItem3 = document.getElementById("id_Ad3").checked;	//3
+	
 	var text1="1000";
 	
 	var choose = new Object();
@@ -15,7 +20,11 @@ function test(){
 	choose.item3 = item3;
 	choose.item4 = item4;
 	choose.Combo_Week_AVG = Combo_Week_AVG;
+	choose.Combo_Day_AVG = Combo_Day_AVG;
 	choose.text1 = text1;
+	choose.AdvancedItem1 = AdvancedItem1;
+	choose.AdvancedItem2 = AdvancedItem2;
+	choose.AdvancedItem3 = AdvancedItem3;
 	
 	var memberfilter = new Array();
 	memberfilter[0] = "item1";
@@ -23,7 +32,9 @@ function test(){
 	memberfilter[2] = "item3";
 	memberfilter[3] = "item4";
 	memberfilter[4] = "text1";
-	memberfilter[5] = "Combo_Week_AVG";
+	memberfilter[5] = "AdvancedItem1";
+	memberfilter[6] = "AdvancedItem2";
+	memberfilter[7] = "AdvancedItem3";
 	
 	var jsonText = JSON.stringify(choose, memberfilter, "\t");
 	//document.write(jsonText);	
@@ -114,7 +125,11 @@ function onRcvData () {
 　if (ajax.readyState == 4) {
 　　if (ajax.status == 200) {
 　　　var content = document.getElementById ('result');
-　　　content.innerHTML = ajax.responseText;				
+　　　//content.innerHTML = '<font color="blue">'+ajax.responseText+'</font>';	
+
+
+
+		content.innerHTML = ajax.responseText;				
 		
 　　} else {
 　　　alert ("伺服器處理錯誤");

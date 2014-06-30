@@ -108,7 +108,19 @@ function ajaxServer( res, postData){
 		analysizer.CalTodayStock( postData, function(today){
 				//寫出的時候要轉成字串才行
 				//console.log(today);
-				res.write(today.toString());
+				var Output = "";
+				var i = 0;
+				for ( i in today)
+				{
+					Output += today[i]+", ";
+					if ( (i+1) % 30  == 0  )
+					{
+						Output += "<BR>";
+					}
+					
+				}
+				res.write(Output.toString());
+				//res.write(today.toString());
 				//
 				res.end();					
 			});
