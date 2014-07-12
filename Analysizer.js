@@ -123,33 +123,40 @@ exports.CalTodayStock = function StockAnalysizer( data, callback){
 
 		if ( jsonobj.AdvancedItem1 === true) 
 		{
-			
-			for( var i = 0;i <stockToday.stock[0].item8.length; ++i)
-			{			
-				stockarr.push(stockToday.stock[0].item8[i]);
+			if ( typeof(stockToday.stock[0].item8) != "undefined" )
+			{
+				for( var i = 0;i <stockToday.stock[0].item8.length; ++i)
+				{			
+					stockarr.push(stockToday.stock[0].item8[i]);
+				}
+				countItem++;			
 			}
-			countItem++;
 
 		}
 		
 		if ( jsonobj.AdvancedItem2 === true) 
 		{
-
-			for( var i = 0;i <stockToday.stock[0].item9.length; ++i)
-			{			
-				stockarr.push(stockToday.stock[0].item9[i]);
+			if ( typeof(stockToday.stock[0].item9) != "undefined" )
+			{
+				for( var i = 0;i <stockToday.stock[0].item9.length; ++i)
+				{			
+					stockarr.push(stockToday.stock[0].item9[i]);
+				}
+				countItem++;			
 			}
-			countItem++;
+
 		}
 		
 		if ( jsonobj.AdvancedItem3 === true) 
 		{
-			
-			for( var i = 0;i <stockToday.stock[0].item10.length; ++i)
+			if ( typeof(stockToday.stock[0].item10) != "undefined" )
 			{			
-				stockarr.push(stockToday.stock[0].item10[i]);
+				for( var i = 0;i <stockToday.stock[0].item10.length; ++i)
+				{			
+					stockarr.push(stockToday.stock[0].item10[i]);
+				}
+				countItem++;
 			}
-			countItem++;
 
 		}		
 		

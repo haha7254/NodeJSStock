@@ -3,10 +3,15 @@
 	<meta charset="utf-8" />
 	<script src="test.js"></script>
 	<script type="text/javascript" src ="jquery-2.1.0.min.js"></script>
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>	
+	<script type="text/javascript" src="http://www.highcharts.com/samples/data/usdeur.js"></script>
+	
 </head>
 <body >
 	<p align="center">this is a test for stock </p>
 	
+	<div id='container' style="height: 300px; width: 600px"></div>
 	<!-- 各週期MA移動平均線 -->
 	<div>
 		<form>
@@ -81,7 +86,25 @@
 		<legend>今日選股</legend>
 		<div id="result" ></div>
 	</fieldset>		
-	
+<script>
+	$(function() {
+		var chart = new Highcharts.StockChart({    
+			chart: {
+				renderTo: document.getElementById('container') 
+			},
+			
+			rangeSelector: {
+				selected: 1
+			},
+			
+			series: [{
+				name: 'USD to EUR',
+				data: usdeur
+			}]
+		});
+	});		
+
+</script>	
 <script>
 	//test();
 </script>
