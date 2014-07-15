@@ -7,6 +7,7 @@
 	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>	
 	<script type="text/javascript" src="http://www.highcharts.com/samples/data/usdeur.js"></script>
 	
+	<script type="text/javascript" src="http://www.highcharts.com/samples/data/ohlc.js"></script>
 </head>
 <body >
 	<p align="center">this is a test for stock </p>
@@ -92,14 +93,20 @@
 			chart: {
 				renderTo: document.getElementById('container') 
 			},
-			
+	 		plotOptions: {
+	    			candlestick: {
+	    			color: 'blue',
+	    			upColor: 'red'
+	    			}
+	    		},			
 			rangeSelector: {
 				selected: 1
 			},
 			
 			series: [{
+				type: 'candlestick',
 				name: 'USD to EUR',
-				data: usdeur
+				data:ohlcdata
 			}]
 		});
 	});		
